@@ -5,6 +5,10 @@
 <p align="left">
   <img src="components.jpg" width="650" title="Components">
 </p>
+<h3>ircuit Diagram:</h3>
+<p align="left">
+  <img src="circuit-diagram.jpg" width="650" title="Components">
+</p>
 <h3>Code:</h3>
 
 ```c++
