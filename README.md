@@ -7,7 +7,7 @@
 </p>
 <h3>Circuit Diagram:</h3>
 <p align="left">
-  <img src="circuit-diagram.jpg" width="650" title="Components">
+  <img src="CircuitDiagram/RobotO.1.jpg" width="650" title="Components">
 </p>
 <h3>Code:</h3>
 
@@ -68,3 +68,11 @@ void loop() {
 # RoBotO.2
 
 <h3>Mobile Controlled & Obstacle Avoidance using Ultrsonic - Robot Components</h3><ul><li>Arduino Uno with cable: 1</li><li><b>Ultrasonic Module:&nbsp; 1</b></li><li>Bluetooth HC-05:&nbsp; 1</li><li>IR Sensor:&nbsp; 2</li><li>L293D Module: 1</li><li>Jumper Wires: 20pcs</li><li>Chassis: 1</li><li>BO Motor: 2</li><li>Caster wheel: 1</li><li>Breadboard: 1</li><li>Wheels: 2</li><li>Screws set – 1</li><li>Clamps – 2</li><li>9v Battery – 2</li><li>Battery Snap – 2</li></ul>
+
+<h3>Circuit Diagram:</h3>
+<p align="left">
+  <img src="CircuitDiagram/RobotO.2.jpg" width="650" title="Components">
+</p>
+<h3>Code:</h3>
+```
+```
