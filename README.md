@@ -65,4 +65,6 @@ void loop() {
   } 
 } 
 ```
+# RoBotO.2
 
+<h3>Mobile Controlled & Obstacle Avoidance using Ultrsonic - Robot Components</h3><ul><li>Arduino Uno with cable: 1</li><li><b>Ultrasonic Module:&nbsp; 1</b></li><li>Bluetooth HC-05:&nbsp; 1</li><li>IR Sensor:&nbsp; 2</li><li>L293D Module: 1</li><li>Jumper Wires: 20pcs</li><li>Chassis: 1</li><li>BO Motor: 2</li><li>Caster wheel: 1</li><li>Breadboard: 1</li><li>Wheels: 2</li><li>Screws set – 1</li><li>Clamps – 2</li><li>9v Battery – 2</li><li>Battery Snap – 2</li></ul>
