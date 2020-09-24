@@ -171,3 +171,110 @@ void move(bool l1, bool l2, bool r1, bool r2, int s) {
 
 }
 ```
+
+# RoBotO.3
+
+<h3>Automatic Obstacle Avoidance using Ultrsonic - Robot Components</h3><ul><li>Arduino Uno with cable: 1</li><li>Ultrasonic Module:&nbsp; 1</li><li><b>Servo 9G:&nbsp; 1</b></li><li>Bluetooth HC-05:&nbsp; 1</li><li>IR Sensor:&nbsp; 2</li><li>L293D Module: 1</li><li>Jumper Wires: 20pcs</li><li>Chassis: 1</li><li>BO Motor: 2</li><li>Caster wheel: 1</li><li>Breadboard: 1</li><li>Wheels: 2</li><li>Screws set – 1</li><li>Clamps – 2</li><li>9v Battery – 2</li><li>Battery Snap – 2</li></ul>
+
+<h3>Circuit Diagram:</h3>
+<p align="left">
+  <img src="CircuitDiagram/RobotO.2.png" width="650" title="Components">
+</p>
+<h3>Code:</h3>
+
+```c++
+// code away!
+#include <Servo.h>
+#define LS 12      // left sensor 
+#define RS 13      // right sensor 
+#define L1 10       // left motor 
+#define L2 11       // left motor 
+#define R1 8       // right motor 
+#define R2 9       // right motor 
+#define E 2 // attach pin D2 Arduino to pin Echo of HC-SR04
+#define T 3 //attach pin D3 Arduino to pin Trig of HC-SR04
+#define S 5 // for speed of pin 5
+#define SR 4// Servo
+Servo srv;  // create servo object to control a servo
+
+void setup ()
+{
+  Serial.begin(9600);
+  pinMode(LS, INPUT);
+  pinMode(RS, INPUT);
+  pinMode(L1, OUTPUT);
+  pinMode(L2, OUTPUT);
+  pinMode(R1, OUTPUT);
+  pinMode(R2, OUTPUT);
+  pinMode(S, OUTPUT);
+  pinMode(T, OUTPUT);
+  pinMode(E, INPUT);
+  srv.attach(SR);
+
+}
+
+
+unsigned int s = 255;
+void loop()
+{
+  String str = "";
+  char c;
+  int di = ping(); // Ping for ultrasonic distance measure
+
+  if (Serial.available()) {
+    while (Serial.available()) {
+
+      str = str + (char)Serial.read(); // Read bluetooth data
+
+    }
+    if (str.length() > 0) {
+      c = str[0];
+    }
+
+    if (c == '1') {
+      move(true, false, true, false, s); // Forward
+    } else if (c == '2') {
+      move(false, true, false, true, s); // Backward
+    } else if (c == '3') {
+      move(true, false, false, true, s);// Left
+    } else if (c == '4') {
+      move(false, true, true, false, s); // Right
+    } else if (c == '5') {
+      move(false, false, false, false, s); // Stop
+    } else if (str.startsWith("s:")) {
+      s = str.substring(2).toInt(); // Speed
+    } else if (str.startsWith("z:")) {
+      srv.write(str.substring(2).toInt()); // Servo
+    } else if (str.startsWith("t:")) {
+      tone(6, 480, str.substring(2).toInt()); // Horn
+    }
+
+  }
+  if ((di < 20 || !digitalRead(LS) || !digitalRead(RS)) && c != '2') {
+    move(false, false, false, false, s); // Stop
+  }
+}
+int ping() {
+  delay(100);
+
+  // Clears the trigPin condition
+  digitalWrite(T, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
+  digitalWrite(T, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(T, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  int du = pulseIn(E, HIGH);
+  // Calculating the distance
+  return du * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
+}
+void move(bool l1, bool l2, bool r1, bool r2, int s) {
+  analogWrite(S, s);
+  digitalWrite(L1, l1);
+  digitalWrite(L2, l2);
+  digitalWrite(R1, r1);
+  digitalWrite(R2, r2);
+
+}
+```
