@@ -178,7 +178,7 @@ void move(bool l1, bool l2, bool r1, bool r2, int s) {
 
 <h3>Circuit Diagram:</h3>
 <p align="left">
-  <img src="CircuitDiagram/RobotO.2.png" width="650" title="Components">
+  <img src="CircuitDiagram/RobotO.3.png" width="650" title="Components">
 </p>
 <h3>Code:</h3>
 
